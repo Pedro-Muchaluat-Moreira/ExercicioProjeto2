@@ -20,3 +20,24 @@ def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
                 return False  # Conflito com outro navio
     
     return True  # Posição suporta o navio   
+def aloca_navios(mapa, blocos):
+    N = len(mapa)
+    for navio in blocos:
+        while True:
+            linha = random.randint(0, N - 1)
+            coluna = random.randint(0, N - 1)
+            orientacao = random.choice(['h', 'v'])
+            if posicao_suporta(mapa, navio, linha, coluna, orientacao):
+                if orientacao == 'v':
+                    for i in range(linha, linha + navio):
+                        mapa[i][coluna] = 'N'
+                else:
+                    for j in range(coluna, coluna + navio):
+                        mapa[linha][j] = 'N'
+                break
+    return mapa
+def foi_derrotado(matriz):
+    for linha in matriz:
+        if 'N' in linha:
+            return False
+    return True

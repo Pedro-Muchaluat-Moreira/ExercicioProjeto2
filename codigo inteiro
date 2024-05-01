@@ -1,3 +1,22 @@
 def cria_mapa(n):
     mapa=[[''for_in range (N)]for_in range(N)]
     return mapa
+def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
+    N = len(mapa)  # Dimensão do mapa
+    if linha < 0 or coluna < 0 or linha >= N or coluna >= N:
+        return False  # Fora do mapa
+    
+    if orientacao == 'v':  # Orientação vertical
+        if linha + blocos > N:
+            return False  # Navio fora do mapa
+        for i in range(linha, linha + blocos):
+            if mapa[i][coluna] != ' ':
+                return False  # Conflito com outro navio
+    elif orientacao == 'h':  # Orientação horizontal
+        if coluna + blocos > N:
+            return False  # Navio fora do mapa
+        for j in range(coluna, coluna + blocos):
+            if mapa[linha][j] != ' ':
+                return False  # Conflito com outro navio
+    
+    return True  # Posição suporta o navio   

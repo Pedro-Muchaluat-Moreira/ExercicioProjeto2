@@ -1,0 +1,3 @@
+def cria_mapa(n):
+    mapa=[[''for_in range (N)]for_in range(N)]
+    return mapa

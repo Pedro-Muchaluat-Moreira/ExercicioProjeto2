@@ -1,9 +1,9 @@
 def cria_mapa(n):
-    mapa=[[''for_in range (N)]for_in range(N)]
+    mapa = [[' 'for_in range (N)]for_in range(N)]
     return mapa
 
 
-    def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
+def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
     N = len(mapa)  # Dimensão do mapa
     if linha < 0 or coluna < 0 or linha >= N or coluna >= N:
         return False  # Fora do mapa
@@ -100,3 +100,21 @@ CORES = {
     'cyan': '\u001b[36m',
     'white': '\u001b[37m'
 }
+
+i = 0
+while i >= 0:
+    frota = int(input('Qual o número da nação da sua frota?'))
+    if frota >= 6 and frota != 0:
+        i += 1
+    else:
+        break
+if frota == 1:
+    print('Você escolheu a nação Brasil')
+elif frota == 2:
+    print('Você escolheu a nação França')
+elif frota == 3:
+    print('Você escolheu a nação Autrália')
+elif frota == 4:
+    print('Você escolheu a nação Rússia')
+elif frota == 5:
+    print('Você escolheu a nação Japão')

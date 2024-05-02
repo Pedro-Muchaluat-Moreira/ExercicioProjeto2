@@ -1,33 +1,33 @@
 def func():
-    def cria_mapa(n):
-    mapa = [[' 'for_in range (N)]for_in range(N)]
-    return mapa
+    def cria_mapa(N):
+        mapa = [[' 'for _ in range (N)]for _ in range(N)]
+        return mapa
     def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
-    N = len(mapa)  # Dimensão do mapa
-    if linha < 0 or coluna < 0 or linha >= N or coluna >= N:
-        return False  # Fora do mapa
+        N = len(mapa)  # Dimensão do mapa
+        if linha < 0 or coluna < 0 or linha >= N or coluna >= N:
+            return False  # Fora do mapa
     
-    if orientacao == 'v':  # Orientação vertical
-        if linha + blocos > N:
-            return False  # Navio fora do mapa
+        if orientacao == 'v':  # Orientação vertical
+            if linha + blocos > N:
+                return False  # Navio fora do mapa
         for i in range(linha, linha + blocos):
             if mapa[i][coluna] != ' ':
                 return False  # Conflito com outro navio
-    elif orientacao == 'h':  # Orientação horizontal
-        if coluna + blocos > N:
-            return False  # Navio fora do mapa
+            elif orientacao == 'h':  # Orientação horizontal
+                if coluna + blocos > N:
+                    return False  # Navio fora do mapa
         for j in range(coluna, coluna + blocos):
             if mapa[linha][j] != ' ':
                 return False  # Conflito com outro navio
     
     return True  # Posição suporta o navio   
     def aloca_navios(mapa, blocos):
-    N = len(mapa)
-    for navio in blocos:
-        while True:
-            linha = random.randint(0, N - 1)
-            coluna = random.randint(0, N - 1)
-            orientacao = random.choice(['h', 'v'])
+        N = len(mapa)
+        for navio in blocos:
+            while True:
+                linha = random.randint(0, N - 1)
+                coluna = random.randint(0, N - 1)
+                orientacao = random.choice(['h', 'v'])
             if posicao_suporta(mapa, navio, linha, coluna, orientacao):
                 if orientacao == 'v':
                     for i in range(linha, linha + navio):
@@ -38,9 +38,9 @@ def func():
                 break
     return mapa
     def foi_derrotado(matriz):
-    for linha in matriz:
-        if 'N' in linha:
-            return False
+        for linha in matriz:
+            if 'N' in linha:
+                return False
     return True
     CONFIGURACAO = {
     'destroyer': 3,
@@ -100,19 +100,19 @@ def func():
     'white': '\u001b[37m'
 }
 
-i = 0
-while i >= 0:
-    frota = int(input('Qual o número da nação da sua frota?'))
-    if frota >= 6 and frota != 0:
-        i += 1
+while True:
+    frota = int(input('Qual o número da nação da sua frota? '))
+    if frota < 1 or frota > 5:
+        print('Opção Inválida. Escolha um número entre 1 e 5.')
     else:
         break
+
 if frota == 1:
     print('Você escolheu a nação Brasil')
 elif frota == 2:
     print('Você escolheu a nação França')
 elif frota == 3:
-    print('Você escolheu a nação Autrália')
+    print('Você escolheu a nação Austrália')
 elif frota == 4:
     print('Você escolheu a nação Rússia')
 elif frota == 5:

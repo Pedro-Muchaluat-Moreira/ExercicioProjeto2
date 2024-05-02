@@ -1,3 +1,4 @@
+import random
 def func():
     def cria_mapa(N):
         mapa = [[' 'for _ in range (N)]for _ in range(N)]
@@ -21,7 +22,7 @@ def func():
                 return False  # Conflito com outro navio
     
     return True  # Posição suporta o navio   
-    def aloca_navios(mapa, blocos):
+    def aloca_navios_computador(mapa, blocos):
         N = len(mapa)
         for navio in blocos:
             while True:
@@ -99,11 +100,52 @@ def func():
     'cyan': '\u001b[36m',
     'white': '\u001b[37m'
 }
+PAISES =  {
+    'Brasil': {
+        'cruzador': 1,
+        'torpedeiro': 2,
+        'destroyer': 1,
+        'couracado': 1,
+        'porta-avioes': 1
+    }, 
+    'França': {
+        'cruzador': 3, 
+        'porta-avioes': 1, 
+        'destroyer': 1, 
+        'submarino': 1, 
+        'couracado': 1
+    },
+    'Austrália': {
+        'couracado': 1,
+        'cruzador': 3, 
+        'submarino': 1,
+        'porta-avioes': 1, 
+        'torpedeiro': 1
+    },
+    'Rússia': {
+        'cruzador': 1,
+        'porta-avioes': 1,
+        'couracado': 2,
+        'destroyer': 1,
+        'submarino': 1
+    },
+    'Japão': {
+        'torpedeiro': 2,
+        'cruzador': 1,
+        'destroyer': 2,
+        'couracado': 1,
+        'submarino': 1
+    }
+}
+
+navio = random.choice(list(PAISES.keys()))
+print('Computador está alocando os navios de guerra do país {}'.format(navio))
+
 
 while True:
-    frota = int(input('Qual o número da nação da sua frota? '))
+    frota = int(input('Qual o número da nação da sua frota?'))
     if frota < 1 or frota > 5:
-        print('Opção Inválida. Escolha um número entre 1 e 5.')
+        print('Opção Inválida.')
     else:
         break
 

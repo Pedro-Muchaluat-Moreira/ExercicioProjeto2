@@ -1,9 +1,8 @@
-def cria_mapa(n):
+def func():
+    def cria_mapa(n):
     mapa = [[' 'for_in range (N)]for_in range(N)]
     return mapa
-
-
-def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
+    def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
     N = len(mapa)  # Dimensão do mapa
     if linha < 0 or coluna < 0 or linha >= N or coluna >= N:
         return False  # Fora do mapa
@@ -22,7 +21,7 @@ def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
                 return False  # Conflito com outro navio
     
     return True  # Posição suporta o navio   
-def aloca_navios(mapa, blocos):
+    def aloca_navios(mapa, blocos):
     N = len(mapa)
     for navio in blocos:
         while True:
@@ -38,12 +37,12 @@ def aloca_navios(mapa, blocos):
                         mapa[linha][j] = 'N'
                 break
     return mapa
-def foi_derrotado(matriz):
+    def foi_derrotado(matriz):
     for linha in matriz:
         if 'N' in linha:
             return False
     return True
-CONFIGURACAO = {
+    CONFIGURACAO = {
     'destroyer': 3,
     'porta-avioes': 5,
     'submarino': 2,
@@ -51,7 +50,7 @@ CONFIGURACAO = {
     'cruzador': 2,
     'couracado': 4
 }
-PAISES =  {
+    PAISES =  {
     'Brasil': {
         'cruzador': 1,
         'torpedeiro': 2,
@@ -88,8 +87,8 @@ PAISES =  {
         'submarino': 1
     }
 }
-ALFABETO = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-CORES = {
+    ALFABETO = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    CORES = {
     'reset': '\u001b[0m',
     'red': '\u001b[31m',
     'black': '\u001b[30m',

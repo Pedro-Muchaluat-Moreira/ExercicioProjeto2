@@ -1,30 +1,32 @@
 import random
-
+N = 10
+coluna = 10
 def cria_mapa(N):
     mapa = [[' ' for _ in range(N)] for _ in range(N)]
     return mapa
 
+import random
 def posicao_suporta(mapa, blocos, linha, coluna, orientacao):
     N = len(mapa)  # Dimensão do mapa
     if linha < 0 or coluna < 0 or linha >= N or coluna >= N:
         return False  # Fora do mapa
-
+    
     if orientacao == 'v':  # Orientação vertical
         if linha + blocos > N:
             return False  # Navio fora do mapa
-    for i in range(linha, linha + blocos):
-        if mapa[i][coluna] != ' ':
-            return False  # Conflito com outro navio
-    if orientacao == 'h':  # Orientação horizontal
+        for i in range(linha, linha + blocos):
+            if mapa[i][coluna] != ' ':
+                return False  # Conflito com outro navio
+    elif orientacao == 'h':  # Orientação horizontal
         if coluna + blocos > N:
             return False  # Navio fora do mapa
         for j in range(coluna, coluna + blocos):
             if mapa[linha][j] != ' ':
                 return False  # Conflito com outro navio
+    
+    return True  # Posição suporta o navio 
 
-    return True  # Posição suporta o navio   
-
-def aloca_navios_computador(mapa, blocos):
+def aloca_navios(mapa, blocos):
     N = len(mapa)
     for navio in blocos:
         while True:
@@ -108,8 +110,11 @@ CORES = {
     'white': '\u001b[37m'
 }
 
+mapa = cria_mapa(N)
 navio = random.choice(list(PAISES.keys()))
 print('Computador está alocando os navios de guerra do país {}'.format(navio))
+blocos = (CONFIGURACAO.values())
+aloca_navios_computador(mapa, blocos)
 while True:
     frota = int(input('Qual o número da nação da sua frota?'))
     if frota < 1 or frota > 5:
